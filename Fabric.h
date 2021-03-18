@@ -21,5 +21,10 @@ public:
 };
 
 CVector* create(string str, map<string, Fabric*> factory) {
+	auto search = factory.find(str);
+	if (search == factory.end()) {
+		std::cout << "Not found\n";
+		throw - 1;
+	}
 		return factory[str]->Create();
 }
