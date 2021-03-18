@@ -49,24 +49,24 @@ int main() {
         map<string, Fabric*> factory;
         factory["Hori"] = new FabricHori;
         factory["Vert"] = new FabricVert;
-        for (int i = 0; i < n; ++i) {
+        for (auto i = arr.begin(); i !=arr.end(); ++i) {
             fin >> s;
-            arr[i] = create(s, factory);
+            *i = create(s, factory);
             fin >> s;
-            arr[i]->SetFileName(s);
+            (*i)->SetFileName(s);
             fin >> m;
-            arr[i]->Setn(m);
+            (*i)->Setn(m);
             for (int j = 0; j < m; ++j) {
                 fin >> d;
-                (*arr[i])[j] = d;
+                (*(*i))[j] = d;
             }
         }
-        for (int i = 0; i < n; ++i) {
-            arr[i]->output(arr[i]->GetFileName());
+        for (auto i = arr.begin(); i != arr.end(); ++i) {
+            (*i)->output((*i)->GetFileName());
         }
         fin.close();
-        for (int i = 0; i < n; ++i) {
-            delete arr[i];
+        for (auto i = arr.begin(); i != arr.end(); ++i) {
+            delete (*i);
         }
         return 0;
     }
