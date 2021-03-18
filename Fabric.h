@@ -21,10 +21,5 @@ public:
 };
 
 CVector* create(string str, map<string, Fabric*> factory) {
-	if (str == "Hori") {
-		return factory["Hori"]->Create();
-	}
-	else if (str == "Vert") {
-		return factory["Vert"]->Create();
-	}
+		return factory[str]->Create();
 }
